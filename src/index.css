@@ -1,0 +1,357 @@
+:root {
+  --x-bg: #000000;
+  --x-bg-soft: #16181c;
+  --x-border: #2f3336;
+  --x-text: #e7e9ea;
+  --x-text-muted: #71767b;
+  --x-accent: #1d9bf0;
+  --x-accent-hover: #1a8cd8;
+  --x-danger: #f4212e;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--x-bg);
+  color: var(--x-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: var(--x-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+.x-app {
+  max-width: 600px;
+  margin: 0 auto;
+  border-left: 1px solid var(--x-border);
+  border-right: 1px solid var(--x-border);
+  min-height: 100vh;
+}
+
+.x-header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.65);
+  border-bottom: 1px solid var(--x-border);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.x-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.x-icon-btn {
+  background: transparent;
+  color: var(--x-text);
+  border: 1px solid var(--x-border);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.x-icon-btn:hover {
+  background: var(--x-bg-soft);
+}
+
+.x-composer {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--x-border);
+}
+
+.x-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--x-accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.x-composer-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.x-composer textarea {
+  width: 100%;
+  min-height: 56px;
+  background: transparent;
+  color: var(--x-text);
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.x-composer textarea::placeholder {
+  color: var(--x-text-muted);
+}
+
+.x-composer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--x-border);
+}
+
+.x-counter {
+  color: var(--x-text-muted);
+  font-size: 13px;
+}
+
+.x-counter.over {
+  color: var(--x-danger);
+}
+
+.x-btn-primary {
+  background: var(--x-accent);
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.x-btn-primary:hover:not(:disabled) {
+  background: var(--x-accent-hover);
+}
+
+.x-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.x-post {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--x-border);
+}
+
+.x-post:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.x-post-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.x-post-meta {
+  display: flex;
+  gap: 6px;
+  font-size: 14px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.x-post-name {
+  font-weight: 700;
+  color: var(--x-text);
+}
+
+.x-post-handle,
+.x-post-time {
+  color: var(--x-text-muted);
+}
+
+.x-post-content {
+  margin-top: 2px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 15px;
+}
+
+.x-post-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.x-post-action {
+  background: transparent;
+  border: none;
+  color: var(--x-text-muted);
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+
+.x-post-action:hover {
+  color: var(--x-danger);
+  background: rgba(244, 33, 46, 0.1);
+}
+
+.x-empty {
+  padding: 40px 16px;
+  text-align: center;
+  color: var(--x-text-muted);
+}
+
+.x-error {
+  margin: 12px 16px;
+  padding: 10px 14px;
+  background: rgba(244, 33, 46, 0.1);
+  border: 1px solid rgba(244, 33, 46, 0.4);
+  color: var(--x-danger);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* Auth screen */
+.x-auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.x-auth-card {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.x-auth-logo {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  color: var(--x-text);
+}
+
+.x-auth h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.x-auth form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.x-field {
+  position: relative;
+  border: 1px solid var(--x-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.x-field:focus-within {
+  border-color: var(--x-accent);
+}
+
+.x-field label {
+  color: var(--x-text-muted);
+  font-size: 12px;
+}
+
+.x-field input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--x-text);
+  font-size: 16px;
+  padding: 2px 0 0;
+}
+
+.x-auth-submit {
+  width: 100%;
+  background: var(--x-text);
+  color: var(--x-bg);
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.x-auth-submit:hover:not(:disabled) {
+  background: #d7dbdc;
+}
+
+.x-auth-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.x-auth-toggle {
+  text-align: center;
+  color: var(--x-text-muted);
+  font-size: 14px;
+}
+
+.x-auth-toggle button {
+  background: transparent;
+  border: none;
+  color: var(--x-accent);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.x-auth-toggle button:hover {
+  text-decoration: underline;
+}
+
+.x-loading {
+  padding: 40px 16px;
+  text-align: center;
+  color: var(--x-text-muted);
+}
