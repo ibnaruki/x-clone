@@ -26,7 +26,7 @@ cat > "$D/q.txt" <<'EOF'
 （ここに整えたプロンプト）
 EOF
 codex exec --skip-git-repo-check -s read-only -o "$D/codex.md" - < "$D/q.txt" > "$D/codex.log" 2>&1 &
-gemini --approval-mode plan -p "$(cat "$D/q.txt")" > "$D/gemini.md" 2> "$D/gemini.log" &
+gemini -m flash --approval-mode plan -p "$(cat "$D/q.txt")" > "$D/gemini.md" 2> "$D/gemini.log" &
 wait
 echo "===== CODEX ====="; cat "$D/codex.md"
 echo "===== GEMINI ====="; cat "$D/gemini.md"
@@ -53,12 +53,15 @@ echo "===== GEMINI ====="; cat "$D/gemini.md"
 
 ## 役割分担の目安
 - Codex（GPT）：コードレビュー、実装案、論理チェック
-- Gemini：長い資料の読み込み、Google検索を使った調べ物、最新情報
+- Gemini：無料枠のため Flash を使う（Auto/Pro は無料枠で止まる）。長い資料の読み込み、Google検索を使った調べ物、最新情報
 - 片方だけで足りる依頼（例：「Geminiで調べて」）は、その1つだけ呼ぶ
 
 ## セットアップ（初回のみ・PCのターミナルで）
 ```bash
 npm install -g @openai/codex @google/gemini-cli
 codex login     # 「Sign in with ChatGPT」を選ぶ
-gemini          # 起動後「Login with Google」を選び、終わったら /quit
 ```
+Gemini は個人Googleアカウントでのログインが廃止されたため、無料のAPIキーを使う：
+1. https://aistudio.google.com/apikey で新規プロジェクトにキーを作成（支払い設定はしない）
+2. PowerShell で `setx GEMINI_API_KEY "キー"` → PowerShell を開き直す
+3. `gemini` を起動し「Use Gemini API Key」を選ぶ
