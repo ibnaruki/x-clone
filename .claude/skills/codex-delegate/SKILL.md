@@ -75,5 +75,13 @@ codex exec --skip-git-repo-check -s read-only "使えるツール（ブラウザ
   - 作業は Codex に `-C` でこのフォルダを指定して頼む
   - 毎日 9:00 に Codex アプリが巡回する。そのあとの差分の精査・候補リストの更新を Codex に頼み、結果を Claude が確認して報告する
 - **船橋駅テナント監視**（`C:\Users\7ruki\Claude Code\ib-japan\17_ららぽーと拠点再編\02_船橋駅テナント監視`）
-  - 正本は Claude。毎日の巡回は Python（今のまま）
-  - 週1回の手作業サイト（`/tenant-check`）のうち、ブラウザで見る部分を Codex に頼んでよい。REINS のログインはユーザー本人
+  - 正本は Claude。毎日 11:00 の巡回は Python（今のまま）
+  - 自動では読めないサイトは **毎日** Codex にブラウザで確認させる（Python の巡回が終わった後に実行）
+    - 貸事務所.biz https://www.0213.biz/list.php?sa=358 （2ページ目以降も）
+    - テナントオフィス https://www.tenanto-office.biz/list.php?ma=12204
+    - 千葉テナント https://chiba-tenanto.com/list.php?s=50
+    - オフィスター https://www.officetar.jp/stations/22427/50_100/
+  - 条件：船橋駅徒歩10分以内、35〜60坪、賃料＋共益費 85万円以下。1〜2階・駅の東側は優先
+  - 1サイトずつ人が見るペースで読む。拒否・CAPTCHA が出たらそのサイトはその日は止めて記録する
+  - Codex は結果を `$OUT` に表で保存するだけ。Claude がそれを読み、`data/manual.json` の更新（`checked` の日付、新しい物件）とメール・共有ページへの反映を行う
+  - REINS はログインと利用料があるため、引き続きユーザー本人が確認する（Codex に任せない）
